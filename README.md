@@ -13,7 +13,7 @@ Agora, será preciso configurar as variáveis necessárias para os serviços exe
 - Adicione no *docker-compose.yml* o caminho onde os arquivos com a extensão *.csv* foram descompactados.
 
 Para realizar a alimentação do banco, realize os seguintes passos:
-2. Faça o build do docker com **sudo make build**;
+1. Faça o build do docker com **sudo make build**;
 2. Execute o comando **sudo make up** para iniciar o container docker; 
 3. Faça o create das tabelas necessárias com **sudo make feed-create**;
 4. Faça o import das tabelas necessárias com **sudo make feed-import** e vá tomar um cafézinho (o import costuma demorar alguns minutos);
@@ -32,6 +32,11 @@ Os dados da Receita são disponibilizados trimestralmente. Os dados mais atuais 
 4. Crie as tabelas necessárias com **sudo make feed-create**;
 5. Faça o import das tabelas necessárias com **sudo make feed-import** (o import costuma demorar alguns minutos);
 6.  Opicional: Para consultas otimizadas, crie índices com o comando **sudo make feed-index** (hora de outro café).
+
+#### Sobre os dados
+Para uma visualização geral de como os dados estão estruturados, [georgevbsantiago](https://github.com/georgevbsantiago/qsacnpj) disponibilizou o [Modelo
+Lógico](https://raw.githubusercontent.com/georgevbsantiago/qsacnpj/master/img/esquema_cnpj.png) das tabelas.
+
 
 #### Como utilizar?
 Exemplo em *R*:
