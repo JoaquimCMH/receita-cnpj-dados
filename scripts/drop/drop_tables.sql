@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS "cnpj_dados_cadastrais_pj";
+DROP TABLE IF EXISTS "cnpj_dados_cnae_secundario_pj";
+DROP TABLE IF EXISTS "cnpj_dados_socios_pj";
+DROP TABLE IF EXISTS "tab_cnae";
+DROP TABLE IF EXISTS "tab_cnpj_entes_publicos";
+DROP TABLE IF EXISTS "tab_codigo_municipios_siafi";
+DROP TABLE IF EXISTS "tab_natureza_juridica";
+DROP TABLE IF EXISTS "tab_qualificacao_responsavel_socio";
+DROP TABLE IF EXISTS "tab_situacao_cadastral";

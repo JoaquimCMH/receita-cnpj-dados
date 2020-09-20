@@ -1,0 +1,44 @@
+version: '3.5'
+
+services:
+  receita-cnpj-dados:
+    build:
+      context: ./
+    container_name: receita-cnpj-dados
+    env_file:
+      - .env
+    volumes:
+    # -<local da sua maquina com os arquivos .csv>:/data
+      - ./:/receita-cnpj-dados
+    ports:
+      - 7644:7643
+    depends_on:
+      - postgres-receita
+    networks:
+      - proxynet
+
+
+  postgres-receita:
+    image: postgres:11.1-alpine
+    container_name: postgres-receita
+    restart: always
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB:-rf_fb}
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-secret}
+      - TZ=GMT
+    volumes:
+      - rf_data:/var/lib/postgresql/data/
+      #- /mnt/postgres:/var/lib/postgresql/data/ caso queria definir um local onde ficarão dos dados do banco
+    ports:
+      - 7657:5432
+    networks:
+      - proxynet
+
+
+networks:
+  proxynet:
+    name: rf_network
+
+volumes:
+  rf_data:
