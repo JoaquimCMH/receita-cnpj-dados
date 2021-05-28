@@ -10,7 +10,6 @@ Agora, será preciso configurar as variáveis necessárias para os serviços exe
 - Crie uma cópia do arquivo .env.sample no diretório raiz desse repositório e renomeie para **.env** (deve também estar no diretório raiz desse repositório)
 - Preencha as variáveis contidas no .env.sample também para o .env. Altere os valores conforme sua necessidade. Atente que se você está usando o banco local, o valor da variável POSTGRES_HOST deve ser postgres-receita, que é o nome do serviço que será levantado pelo docker-compose.
 - O formato dos dados que foi disponibilizado pela Receita Federal exige um certo gral de dificuldade antes do consumo dos dados. Por sorte, o [turicas](https://github.com/turicas/socios-brasil) e o [georgevbsantiago](https://github.com/georgevbsantiago/qsacnpj) já baixaram, converteram e disponibilizaram esses arquivos da RF em formatos de fácil acesso. Sendo assim, baixe os dados em formato *.csv* disponibilizados em  [georgevbsantiago](https://github.com/georgevbsantiago/qsacnpj) e descompacte o arquivo .zip.
-- Adicione no *docker-compose.yml* o caminho onde os arquivos com a extensão *.csv* foram descompactados.
 
 Para realizar a alimentação do banco, realize os seguintes passos:
 1. Faça o build do docker com **sudo make build**;
@@ -18,7 +17,7 @@ Para realizar a alimentação do banco, realize os seguintes passos:
 3. Faça o create das tabelas necessárias com **sudo make feed-create**;
 4. Faça o import das tabelas necessárias com **sudo make feed-import** e vá tomar um cafézinho (o import costuma demorar alguns minutos);
 5. Opicional: Para consultas otimizadas, crie índices com o comando **sudo make feed-index** (hora de outro café);
-3. Para interromper parar a execução do container basta usar **sudo make stop**.
+6. Para interromper parar a execução do container basta usar **sudo make stop**.
 
 Para ver todos os comandos *make* disponíveis: **sudo make help**.
 

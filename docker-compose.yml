@@ -8,7 +8,7 @@ services:
     env_file:
       - .env
     volumes:
-    # -<local da sua maquina com os arquivos .csv>:/data
+      - ${ARMAZENAMENTO_CSV_PATH:-./}:/data
       - ./:/receita-cnpj-dados
     ports:
       - 7644:7643
@@ -26,15 +26,15 @@ services:
       - POSTGRES_DB=${POSTGRES_DB:-rf_fb}
       - POSTGRES_USER=${POSTGRES_USER:-postgres}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-secret}
+      - ARMAZENAMENTO_CSV_PATH=${ARMAZENAMENTO_CSV_PATH:-/data}
+      - ARMAZENAMENTO_BANCO_PATH=${ARMAZENAMENTO_BANCO_PATH:-rf_data}
       - TZ=GMT
     volumes:
-      - rf_data:/var/lib/postgresql/data/
-      #- /mnt/postgres:/var/lib/postgresql/data/ caso queria definir um local onde ficarão dos dados do banco
+      - ${ARMAZENAMENTO_BANCO_PATH:-rf_data}:/var/lib/postgresql/data/
     ports:
       - 7657:5432
     networks:
       - proxynet
-
 
 networks:
   proxynet:
